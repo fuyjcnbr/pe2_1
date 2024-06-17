@@ -4,11 +4,16 @@ import pickle
 import pandas as pd
 from sklearn.metrics import mean_squared_error, r2_score
 
+from util import SampleType, PrepType, DataType, get_file_name
 
 if __name__ == "__main__":
     name = "reg1"
-    X_test = pd.read_csv(Path("test").joinpath(f"{name}_x_prep.csv"))
-    y_test = pd.read_csv(Path("test").joinpath(f"{name}_y_prep.csv"))
+    X_test = pd.read_csv(
+        get_file_name(data_name=name, sample_type=SampleType.TEST, prep_type=PrepType.PREPARED, data_type=DataType.X)
+    )
+    y_test = pd.read_csv(
+        get_file_name(data_name=name, sample_type=SampleType.TEST, prep_type=PrepType.PREPARED, data_type=DataType.Y)
+    )
 
     with open('estimator.pkl', 'rb') as f:
         estimator = pickle.load(f)
