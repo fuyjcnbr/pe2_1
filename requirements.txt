@@ -1,5 +1,3 @@
 pandas
 pathlib
-pickle
-random
 scikit-learn
